@@ -1,13 +1,933 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>agency-website</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abarix Solutions | Intelligent Digital Engineering</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Tailwind CSS (CDN for prototype) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#0A0F1C',
+            neon: '#00BFFF',
+            darkBlue: '#0D1426',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-navy text-white antialiased selection:bg-neon/30 selection:text-white">
+
+  <!-- Global Elements -->
+  <div class="custom-cursor hidden md:block"></div>
+  <div class="scroll-progress"></div>
+
+  <!-- Sticky Navbar -->
+  <nav
+    class="fixed top-0 left-0 w-full z-50 transition-all duration-300 py-6 px-6 md:px-12 lg:px-24 flex justify-between items-center border-b border-white/5 bg-navy/40 backdrop-blur-md">
+    <a href="#home" class="text-2xl font-display font-bold text-gradient flex items-center gap-2 hover-trigger">
+      <i data-lucide="hexagon" class="text-neon w-8 h-8"></i> Abarix
+    </a>
+    <div class="hidden lg:flex gap-8 text-sm font-medium text-gray-300">
+      <a href="#about" class="hover:text-neon transition-colors hover-trigger">About</a>
+      <a href="#services" class="hover:text-neon transition-colors hover-trigger">Services</a>
+      <a href="#solutions" class="hover:text-neon transition-colors hover-trigger">Solutions</a>
+      <a href="#stack" class="hover:text-neon transition-colors hover-trigger">Tech</a>
+      <a href="#careers" class="hover:text-neon transition-colors hover-trigger">Careers</a>
+    </div>
+    <a href="#contact"
+      class="hidden md:flex btn-glow glass-panel text-white px-6 py-2.5 rounded-full font-medium hover:text-neon items-center gap-2 hover-trigger">
+      Let's Talk <i data-lucide="arrow-right" class="w-4 h-4"></i>
+    </a>
+    <button class="lg:hidden text-white">
+      <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+  </nav>
+
+  <!-- 1. Home / Hero -->
+  <section id="home" class="relative min-h-[100vh] flex items-center justify-center pt-20 overflow-hidden">
+    <div id="vanta-bg" class="absolute inset-0 z-0 opacity-40"></div>
+    <div class="container mx-auto px-6 relative z-10 text-center flex flex-col items-center">
+      <div
+        class="inline-block px-5 py-2 rounded-full border border-neon/30 bg-neon/10 text-neon text-xs font-semibold tracking-wider uppercase mb-8 backdrop-blur-md"
+        data-aos="fade-down">
+        Next-Gen Software Agency
+      </div>
+      <h1 class="hero-title text-5xl md:text-7xl lg:text-8xl font-display font-bold leading-tight mb-6 max-w-5xl">
+        We Build <br />
+        <span class="text-gradient">Intelligent Digital Solutions</span>
+      </h1>
+      <p class="hero-subtitle text-lg md:text-xl text-gray-400 mb-10 max-w-2xl font-light">
+        Transforming ideas into scalable, secure, and high-performance software for global enterprises and ambitious
+        startups.
+      </p>
+      <!-- Buttons Container -->
+      <div class="hero-btns mt-10 flex justify-center items-center gap-6 flex-wrap">
+        <a href="#contact"
+          class="relative px-10 py-4 rounded-xl bg-blue-600 text-white font-bold shadow-lg shadow-blue-500/40 hover:scale-105 hover:shadow-blue-500/70 transition-all duration-300 hover-trigger text-lg">
+          Get Started
+        </a>
+        <a href="#services"
+          class="px-10 py-4 rounded-xl border border-blue-500/40 text-blue-400 font-bold hover:bg-blue-500/10 transition-all duration-300 flex items-center justify-center gap-2 hover-trigger text-lg">
+          View Our Work <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <a href="#about"
+      class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce hover:text-neon transition-colors">
+      <i data-lucide="mouse" class="w-6 h-6 mb-2 mx-auto"></i>
+    </a>
+  </section>
+
+  <!-- 2. About Us -->
+  <section id="about" class="py-32 relative z-10 bg-navy">
+    <!-- background glow -->
+    <div
+      class="absolute right-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-neon/5 rounded-full blur-[120px] pointer-events-none">
+    </div>
+
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="flex flex-col lg:flex-row items-center gap-20">
+        <div class="lg:w-1/2" data-aos="fade-right">
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Redefining <span
+              class="text-gradient-purple">Digital Excellence</span></h2>
+          <p class="text-gray-400 mb-6 text-lg leading-relaxed">
+            At Abarix Solutions, we fuse cutting-edge technology with stunning design. Since our inception, we have
+            driven digital transformation for industry leaders globally, crafting state-of-the-art products that
+            dominate the modern web and cloud ecosystem.
+          </p>
+          <div class="glass-card p-8 mt-8 border-l-4 border-l-neon shadow-2xl shadow-neon/5 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="target" class="w-24 h-24"></i></div>
+            <h3 class="text-2xl font-display font-bold mb-3 text-white flex items-center gap-2 relative z-10">
+              Our Mission
+            </h3>
+            <p class="text-gray-300 leading-relaxed relative z-10">To build intelligent, scalable, and beautifully
+              designed digital infrastructure that propels humanity forward into the cloud era.</p>
+          </div>
+        </div>
+        <!-- Timeline & Stats -->
+        <div class="lg:w-1/2 w-full" data-aos="fade-left">
+          <div class="grid grid-cols-2 gap-6">
+            <div class="glass-card p-10 text-center float-anim group hover-trigger" style="animation-delay: 0s;">
+              <div class="text-5xl font-display font-extrabold text-white mb-2 group-hover:text-neon transition-colors">
+                <span class="stat-counter" data-target="250">0</span>+
+              </div>
+              <div class="text-xs text-gray-400 uppercase tracking-[0.2em] font-medium">Projects Delivered</div>
+            </div>
+            <div class="glass-card p-10 text-center float-anim group hover-trigger" style="animation-delay: 1.5s;">
+              <div
+                class="text-5xl font-display font-extrabold text-white mb-2 group-hover:text-purple-400 transition-colors">
+                <span class="stat-counter" data-target="150">0</span>+
+              </div>
+              <div class="text-xs text-gray-400 uppercase tracking-[0.2em] font-medium">Clients Worldwide</div>
+            </div>
+            <div class="glass-card p-10 text-center float-anim group hover-trigger" style="animation-delay: 0.5s;">
+              <div
+                class="text-5xl font-display font-extrabold text-white mb-2 group-hover:text-blue-400 transition-colors">
+                <span class="stat-counter" data-target="10">0</span>+
+              </div>
+              <div class="text-xs text-gray-400 uppercase tracking-[0.2em] font-medium">Years Experience</div>
+            </div>
+            <div class="glass-card p-10 text-center float-anim group hover-trigger" style="animation-delay: 2s;">
+              <div
+                class="text-5xl font-display font-extrabold text-white mb-2 group-hover:text-pink-400 transition-colors">
+                <span class="stat-counter" data-target="35">0</span>+
+              </div>
+              <div class="text-xs text-gray-400 uppercase tracking-[0.2em] font-medium">Tech Mastered</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Services -->
+  <section id="services" class="py-32 relative z-0 bg-darkBlue">
+    <div
+      class="absolute top-0 right-0 w-full md:w-[600px] h-[600px] bg-neon/10 rounded-full blur-[150px] pointer-events-none">
+    </div>
+    <div
+      class="absolute bottom-0 left-0 w-full md:w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[150px] pointer-events-none">
+    </div>
+
+    <div class="container mx-auto px-6 max-w-7xl relative z-10">
+      <div class="text-center mb-20" data-aos="fade-up">
+        <span class="text-neon font-bold tracking-[0.2em] uppercase text-xs mb-4 block">What We Do</span>
+        <h2 class="text-5xl md:text-6xl font-display font-extrabold mb-6">Enterprise <span
+            class="text-gradient">Services</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">End-to-end software development lifecycle management to turn
+          complex problems into elegant scalable solutions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+        <!-- Services Cards -->
+        <div
+          class="relative z-10 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-blue-500/20 hover:border-blue-400 transition-all duration-500 p-10 group hover-trigger premium-service-card before:absolute before:-inset-1 before:bg-blue-500/10 before:blur-2xl before:rounded-2xl before:-z-10"
+          style="animation-delay: 0s" data-aos="fade-up" data-aos-delay="0">
+          <div class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+            <div
+              class="absolute -left-1/2 top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent rotate-12 animate-shimmer">
+            </div>
+          </div>
+          <div
+            class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-neon/20 to-transparent flex items-center justify-center mb-8 group-hover:from-neon/40 transition-all border border-neon/10">
+            <i data-lucide="layout" class="text-neon w-8 h-8"></i>
+          </div>
+          <h3 class="relative z-10 text-2xl font-bold mb-4 font-display">Custom Web Dev</h3>
+          <p class="relative z-10 text-gray-400 text-sm leading-relaxed">Ultra-fast, responsive, and robust web
+            applications utilizing modern JavaScript frameworks like React, Next.js, and Vue.</p>
+        </div>
+
+        <div
+          class="relative z-10 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-blue-500/20 hover:border-blue-400 transition-all duration-500 p-10 group hover-trigger premium-service-card before:absolute before:-inset-1 before:bg-blue-500/10 before:blur-2xl before:rounded-2xl before:-z-10"
+          style="animation-delay: 1s" data-aos="fade-up" data-aos-delay="100">
+          <div class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+            <div
+              class="absolute -left-1/2 top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent rotate-12 animate-shimmer">
+            </div>
+          </div>
+          <div
+            class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500/20 to-transparent flex items-center justify-center mb-8 group-hover:from-purple-500/40 transition-all border border-purple-500/10">
+            <i data-lucide="database" class="text-purple-400 w-8 h-8"></i>
+          </div>
+          <h3 class="relative z-10 text-2xl font-bold mb-4 font-display">SaaS Product Dev</h3>
+          <p class="relative z-10 text-gray-400 text-sm leading-relaxed">Scalable, multi-tenant architectures tailored
+            to accommodate millions of users globally with high availability.</p>
+        </div>
+
+        <div
+          class="relative z-10 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-blue-500/20 hover:border-blue-400 transition-all duration-500 p-10 group hover-trigger premium-service-card before:absolute before:-inset-1 before:bg-blue-500/10 before:blur-2xl before:rounded-2xl before:-z-10"
+          style="animation-delay: 2s" data-aos="fade-up" data-aos-delay="200">
+          <div class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+            <div
+              class="absolute -left-1/2 top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent rotate-12 animate-shimmer">
+            </div>
+          </div>
+          <div
+            class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-transparent flex items-center justify-center mb-8 group-hover:from-blue-500/40 transition-all border border-blue-500/10">
+            <i data-lucide="cloud" class="text-blue-400 w-8 h-8"></i>
+          </div>
+          <h3 class="relative z-10 text-2xl font-bold mb-4 font-display">Cloud Solutions</h3>
+          <p class="relative z-10 text-gray-400 text-sm leading-relaxed">Infrastructure modernization, containerization,
+            and management natively on AWS, Google Cloud, and Microsoft Azure.</p>
+        </div>
+
+        <div
+          class="relative z-10 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-blue-500/20 hover:border-blue-400 transition-all duration-500 p-10 group hover-trigger premium-service-card before:absolute before:-inset-1 before:bg-blue-500/10 before:blur-2xl before:rounded-2xl before:-z-10"
+          style="animation-delay: 0s" data-aos="fade-up" data-aos-delay="300">
+          <div class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+            <div
+              class="absolute -left-1/2 top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent rotate-12 animate-shimmer">
+            </div>
+          </div>
+          <div
+            class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-pink-500/20 to-transparent flex items-center justify-center mb-8 group-hover:from-pink-500/40 transition-all border border-pink-500/10">
+            <i data-lucide="cpu" class="text-pink-400 w-8 h-8"></i>
+          </div>
+          <h3 class="relative z-10 text-2xl font-bold mb-4 font-display">AI & Machine Learning</h3>
+          <p class="relative z-10 text-gray-400 text-sm leading-relaxed">Predictive analytics, custom LLMs, and
+            generative AI models integrated securely into your core business logic.</p>
+        </div>
+
+        <div
+          class="relative z-10 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-blue-500/20 hover:border-blue-400 transition-all duration-500 p-10 group hover-trigger premium-service-card before:absolute before:-inset-1 before:bg-blue-500/10 before:blur-2xl before:rounded-2xl before:-z-10"
+          style="animation-delay: 1s" data-aos="fade-up" data-aos-delay="400">
+          <div class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+            <div
+              class="absolute -left-1/2 top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent rotate-12 animate-shimmer">
+            </div>
+          </div>
+          <div
+            class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-green-500/20 to-transparent flex items-center justify-center mb-8 group-hover:from-green-500/40 transition-all border border-green-500/10">
+            <i data-lucide="shield-check" class="text-green-400 w-8 h-8"></i>
+          </div>
+          <h3 class="relative z-10 text-2xl font-bold mb-4 font-display">Cybersecurity</h3>
+          <p class="relative z-10 text-gray-400 text-sm leading-relaxed">Military-grade protection, DevSecOps pipelines,
+            and thorough penetration testing to fortify digital assets.</p>
+        </div>
+
+        <div
+          class="relative z-10 overflow-hidden rounded-2xl bg-white/5 backdrop-blur-md border border-blue-500/20 hover:border-blue-400 transition-all duration-500 p-10 group hover-trigger premium-service-card before:absolute before:-inset-1 before:bg-blue-500/10 before:blur-2xl before:rounded-2xl before:-z-10"
+          style="animation-delay: 2s" data-aos="fade-up" data-aos-delay="500">
+          <div class="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none z-0">
+            <div
+              class="absolute -left-1/2 top-0 w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400/30 to-transparent rotate-12 animate-shimmer">
+            </div>
+          </div>
+          <div
+            class="relative z-10 w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-500/20 to-transparent flex items-center justify-center mb-8 group-hover:from-orange-500/40 transition-all border border-orange-500/10">
+            <i data-lucide="smartphone" class="text-orange-400 w-8 h-8"></i>
+          </div>
+          <h3 class="relative z-10 text-2xl font-bold mb-4 font-display">Mobile App Dev</h3>
+          <p class="relative z-10 text-gray-400 text-sm leading-relaxed">High-performance Native (iOS/Android) and
+            cross-platform apps that deliver flawless user experiences at 120fps.</p>
+        </div>
+      </div>
+
+      <div class="mt-20 text-center">
+        <a href="services.html"
+          class="inline-flex items-center gap-3 text-white hover:text-neon transition-colors underline-animated pb-1 font-bold tracking-wide uppercase text-sm">
+          Explore all our services <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Solutions (By Business Problems) -->
+  <section id="solutions" class="py-32 relative bg-navy border-y border-white/5">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16" data-aos="fade-up">
+        <div class="max-w-2xl">
+          <span class="text-neon font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Use Cases</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4">Targeted <span
+              class="text-gradient">Solutions</span></h2>
+          <p class="text-gray-400 text-lg">Comprehensive architectural approaches for complex industry-specific scale
+            challenges.</p>
+        </div>
+        <div class="hidden md:block">
+          <i data-lucide="layout-grid" class="w-16 h-16 text-white/10"></i>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Large Item 1 -->
+        <div class="glass-card overflow-hidden group hover-trigger col-span-1 md:col-span-2 relative min-h-[350px]"
+          data-aos="fade-up" data-aos-delay="0">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent z-10 transition-opacity duration-500">
+          </div>
+          <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1200"
+            class="absolute inset-0 w-full h-full object-cover z-0 scale-100 group-hover:scale-110 transition-transform duration-1000"
+            alt="Tech" />
+          <div class="p-10 h-full flex flex-col justify-end relative z-20">
+            <i data-lucide="repeat"
+              class="w-12 h-12 text-neon mb-6 bg-navy/50 p-2 rounded-xl backdrop-blur-sm border border-white/10"></i>
+            <h3 class="text-3xl font-display font-bold mb-3 text-white">Digital Transformation</h3>
+            <p class="text-gray-300 max-w-md">Modernize legacy systems, automate internal workflows, and enable
+              digital-first agility to outpace competitors.</p>
+          </div>
+        </div>
+
+        <!-- Small Item 1 -->
+        <div class="glass-card overflow-hidden group hover-trigger relative min-h-[350px]" data-aos="fade-up"
+          data-aos-delay="100">
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+          </div>
+          <div class="p-10 h-full flex flex-col justify-between relative z-20 bg-darkBlue">
+            <i data-lucide="bar-chart-3" class="w-10 h-10 text-purple-400"></i>
+            <div>
+              <h3 class="text-2xl font-bold mb-2">Analytics Dashboards</h3>
+              <p class="text-gray-400 text-sm">Real-time BI intelligence visualization engines.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Small Item 2 -->
+        <div class="glass-card overflow-hidden group hover-trigger relative min-h-[350px]" data-aos="fade-up"
+          data-aos-delay="200">
+          <div
+            class="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0">
+          </div>
+          <div class="p-10 h-full flex flex-col justify-between relative z-20 bg-darkBlue">
+            <i data-lucide="bot" class="w-10 h-10 text-blue-400"></i>
+            <div>
+              <h3 class="text-2xl font-bold mb-2">Enterprise AI Agents</h3>
+              <p class="text-gray-400 text-sm">Custom LLMs integrated straight to your CRM pipelines.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Large Item 2 -->
+        <div class="glass-card overflow-hidden group hover-trigger col-span-1 md:col-span-2 relative min-h-[350px]"
+          data-aos="fade-up" data-aos-delay="300">
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black via-navy/80 to-transparent z-10 transition-opacity duration-500">
+          </div>
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=1200"
+            class="absolute inset-0 w-full h-full object-cover z-0 scale-100 group-hover:scale-110 transition-transform duration-1000"
+            alt="ERP HQ" />
+          <div class="p-10 h-full flex flex-col justify-end relative z-20">
+            <i data-lucide="building-2"
+              class="w-12 h-12 text-pink-500 mb-6 bg-navy/50 p-2 rounded-xl backdrop-blur-sm border border-white/10"></i>
+            <h3 class="text-3xl font-display font-bold mb-3 text-white">Custom Supply Portals (ERP & CRM)</h3>
+            <p class="text-gray-300 max-w-md">Unified systems for massive internal management, supply chain
+              transparency, and client relationship logistics.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Industries We Serve & 6. Tech Stack -->
+  <section id="stack" class="py-32 relative bg-navy">
+    <!-- Abstract gradient blob center -->
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon/5 rounded-full blur-[150px] pointer-events-none">
+    </div>
+
+    <div class="container mx-auto px-6 max-w-7xl relative z-10">
+      <!-- Industries -->
+      <div class="mb-32">
+        <h2 class="text-center text-4xl md:text-5xl font-display font-bold mb-16">Industries We <span
+            class="text-gradient">Empower</span></h2>
+        <div class="flex flex-wrap justify-center gap-4 lg:gap-6" data-aos="fade-up" data-aos-delay="100">
+          <span class="industry-badge text-lg hover-trigger">FinTech & Banking</span>
+          <span class="industry-badge text-lg hover-trigger">Healthcare & MedTech</span>
+          <span class="industry-badge text-lg hover-trigger">E-Learning & EdTech</span>
+          <span class="industry-badge text-lg hover-trigger">Real Estate</span>
+          <span class="industry-badge text-lg hover-trigger">E-commerce</span>
+          <span class="industry-badge text-lg hover-trigger">Logistics & Supply</span>
+          <span class="industry-badge text-lg hover-trigger">SaaS Startups</span>
+          <span class="industry-badge text-lg hover-trigger">GovTech</span>
+          <span class="industry-badge text-lg hover-trigger">Manufacturing</span>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div>
+        <h2 class="text-center text-4xl md:text-5xl font-display font-bold mb-8">Our <span
+            class="text-gradient">Technology Stack</span></h2>
+        <p class="text-center text-gray-400 max-w-2xl mx-auto mb-16 text-lg">We strictly leverage modern, robust, and
+          scalable technologies to ensure perfect digital performance.</p>
+
+        <div class="glass-card p-12 md:p-20">
+          <div
+            class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-12 gap-y-16 items-center justify-items-center opacity-90"
+            data-aos="fade-in">
+            <!-- Tech Logos (from Devicon CDN) -->
+            <div class="flex flex-col flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="React" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">REACT</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                class="w-16 h-16 grayscale-hover invert" alt="Next.js" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">NEXT.JS</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+                class="w-16 h-16 grayscale-hover" alt="Tailwind CSS" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">TAILWIND</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="TypeScript" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">TYPESCRIPT</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="Java" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">JAVA/SPRING</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="Node.js" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">NODE.JS</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="Python" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">PYTHON</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="PostgreSQL" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">POSTGRES</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="MongoDB" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">MONGODB</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                class="w-20 h-20 grayscale-hover invert" alt="AWS" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">AWS</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="GCP" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">GCP</span>
+            </div>
+            <div class="flex flex-col items-center gap-4 group hover-trigger">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                class="w-16 h-16 grayscale-hover" alt="Docker" />
+              <span
+                class="text-xs font-semibold tracking-wider text-gray-500 group-hover:text-white transition-colors">DOCKER/K8S</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Our Team -->
+  <section id="team" class="py-32 relative bg-darkBlue border-t border-white/5">
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="text-center mb-20" data-aos="fade-up">
+        <span class="text-neon font-bold tracking-[0.2em] uppercase text-xs mb-4 block">The Brains</span>
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6">Leadership <span
+            class="text-gradient">Team</span></h2>
+        <p class="text-gray-400 max-w-2xl mx-auto text-lg">The visionaries and elite engineers behind our
+          state-of-the-art solutions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Team Member 1 -->
+        <div class="glass-card text-center overflow-hidden group hover-trigger" data-aos="fade-up" data-aos-delay="0">
+          <div class="relative w-full aspect-[4/5] bg-gray-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=600"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="CEO" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-90 group-hover:opacity-70 transition-opacity">
+            </div>
+            <div
+              class="absolute bottom-6 left-0 w-full flex justify-center gap-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100 z-20">
+              <a href="#"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-neon hover:text-navy transition-colors text-white border border-white/20"><i
+                  data-lucide="linkedin" class="w-5 h-5"></i></a>
+              <a href="#"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-neon hover:text-navy transition-colors text-white border border-white/20"><i
+                  data-lucide="twitter" class="w-5 h-5"></i></a>
+            </div>
+          </div>
+          <div
+            class="p-6 relative z-30 bg-navy/80 backdrop-blur-sm group-hover:bg-navy transition-colors border-t border-white/10">
+            <h3 class="text-2xl font-bold font-display">Marcus Vance</h3>
+            <p class="text-neon text-sm font-semibold tracking-wider mt-1 uppercase">Founder & CEO</p>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="glass-card text-center overflow-hidden group hover-trigger" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative w-full aspect-[4/5] bg-gray-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="CTO" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-90 group-hover:opacity-70 transition-opacity">
+            </div>
+            <div
+              class="absolute bottom-6 left-0 w-full flex justify-center gap-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100 z-20">
+              <a href="#"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-neon hover:text-navy transition-colors text-white border border-white/20"><i
+                  data-lucide="linkedin" class="w-5 h-5"></i></a>
+              <a href="#"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-neon hover:text-navy transition-colors text-white border border-white/20"><i
+                  data-lucide="github" class="w-5 h-5"></i></a>
+            </div>
+          </div>
+          <div
+            class="p-6 relative z-30 bg-navy/80 backdrop-blur-sm group-hover:bg-navy transition-colors border-t border-white/10">
+            <h3 class="text-2xl font-bold font-display">Sarah Jenkins</h3>
+            <p class="text-purple-400 text-sm font-semibold tracking-wider mt-1 uppercase">Chief Tech Officer</p>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="glass-card text-center overflow-hidden group hover-trigger" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative w-full aspect-[4/5] bg-gray-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=600"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              alt="Lead Dev" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-90 group-hover:opacity-70 transition-opacity">
+            </div>
+            <div
+              class="absolute bottom-6 left-0 w-full flex justify-center gap-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100 z-20">
+              <a href="#"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-neon hover:text-navy transition-colors text-white border border-white/20"><i
+                  data-lucide="github" class="w-5 h-5"></i></a>
+            </div>
+          </div>
+          <div
+            class="p-6 relative z-30 bg-navy/80 backdrop-blur-sm group-hover:bg-navy transition-colors border-t border-white/10">
+            <h3 class="text-2xl font-bold font-display">David Chen</h3>
+            <p class="text-blue-400 text-sm font-semibold tracking-wider mt-1 uppercase">Lead Architect</p>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="glass-card text-center overflow-hidden group hover-trigger" data-aos="fade-up" data-aos-delay="300">
+          <div class="relative w-full aspect-[4/5] bg-gray-800 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              alt="Design Lead" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-navy to-transparent opacity-90 group-hover:opacity-70 transition-opacity">
+            </div>
+            <div
+              class="absolute bottom-6 left-0 w-full flex justify-center gap-4 translate-y-12 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100 z-20">
+              <a href="#"
+                class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-neon hover:text-navy transition-colors text-white border border-white/20"><i
+                  data-lucide="dribbble" class="w-5 h-5"></i></a>
+            </div>
+          </div>
+          <div
+            class="p-6 relative z-30 bg-navy/80 backdrop-blur-sm group-hover:bg-navy transition-colors border-t border-white/10">
+            <h3 class="text-2xl font-bold font-display">Elena Rostova</h3>
+            <p class="text-pink-400 text-sm font-semibold tracking-wider mt-1 uppercase">Head of UI/UX</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Careers & 9. Testimonials inside a structured split section -->
+  <section id="careers" class="py-32 relative bg-navy overflow-hidden">
+    <!-- Decoration -->
+    <div
+      class="absolute top-0 right-0 w-full h-px bg-gradient-to-r from-transparent via-neon to-transparent opacity-30">
+    </div>
+
+    <div class="container mx-auto px-6 max-w-7xl">
+      <div class="flex flex-col lg:flex-row gap-20">
+        <!-- Careers Left -->
+        <div class="lg:w-1/2" data-aos="fade-right">
+          <span class="text-neon font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Join The Elite</span>
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Open <span class="text-gradient">Positions</span>
+          </h2>
+          <p class="text-gray-400 mb-10 text-lg">We are always looking for hyper-talented engineers and designers.
+            Remote-first, competitive salary, and equity.</p>
+
+          <div class="space-y-4">
+            <div
+              class="glass-card p-6 flex justify-between items-center group hover-trigger hover:border-neon cursor-pointer transition-all">
+              <div>
+                <h4 class="text-xl font-bold mb-1 group-hover:text-neon transition-colors">Senior React Engineer</h4>
+                <span class="text-sm text-gray-500 flex items-center gap-2"><i data-lucide="map-pin"
+                    class="w-4 h-4"></i> Remote (Global)</span>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-neon transition-colors group-hover:text-navy">
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </div>
+            </div>
+            <div
+              class="glass-card p-6 flex justify-between items-center group hover-trigger hover:border-purple-400 cursor-pointer transition-all">
+              <div>
+                <h4 class="text-xl font-bold mb-1 group-hover:text-purple-400 transition-colors">DevOps Specialist
+                  (AWS/K8s)</h4>
+                <span class="text-sm text-gray-500 flex items-center gap-2"><i data-lucide="map-pin"
+                    class="w-4 h-4"></i> New York / Remote</span>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-purple-400 transition-colors group-hover:text-navy">
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </div>
+            </div>
+            <div
+              class="glass-card p-6 flex justify-between items-center group hover-trigger hover:border-blue-400 cursor-pointer transition-all">
+              <div>
+                <h4 class="text-xl font-bold mb-1 group-hover:text-blue-400 transition-colors">UI/UX Product Designer
+                </h4>
+                <span class="text-sm text-gray-500 flex items-center gap-2"><i data-lucide="map-pin"
+                    class="w-4 h-4"></i> London / Remote</span>
+              </div>
+              <div
+                class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-blue-400 transition-colors group-hover:text-navy">
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+              </div>
+            </div>
+          </div>
+
+          <a href="#contact"
+            class="inline-flex btn-glow glass-panel text-white px-8 py-3 rounded-full mt-10 hover:border-white/30 font-medium hover-trigger">
+            <i data-lucide="mail" class="w-5 h-5 mr-2"></i> Send us your resume
+          </a>
+        </div>
+
+        <!-- Testimonials Right -->
+        <div class="lg:w-1/2 w-full" data-aos="fade-left">
+          <span class="text-neon font-bold tracking-[0.2em] uppercase text-xs mb-4 block">Proven Track Record</span>
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-6">Client <span
+              class="text-gradient">Feedback</span></h2>
+
+          <div class="swiper testimonials-slider w-full pb-16 mt-10">
+            <div class="swiper-wrapper">
+              <!-- Slide 1 -->
+              <div class="swiper-slide !w-[350px]">
+                <div class="glass-card p-8 h-full relative cursor-grab">
+                  <i data-lucide="quote" class="text-neon/20 w-16 h-16 absolute top-4 right-4 z-0"></i>
+                  <div class="relative z-10">
+                    <div class="flex items-center gap-2 text-neon mb-6">
+                      <i data-lucide="star" class="w-4 h-4 fill-neon"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-neon"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-neon"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-neon"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-neon"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 italic text-lg line-clamp-4">"Abarix completely transformed our legacy
+                      infrastructure. Their team delivered a robust Next.js and AWS solution that 10x'd our application
+                      speed."</p>
+                    <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                      <img
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80"
+                        alt="Client" class="w-12 h-12 rounded-full ring-2 ring-neon/50">
+                      <div>
+                        <h4 class="font-bold text-white">James Wilson</h4>
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">VP of Eng, FinSecure</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 2 -->
+              <div class="swiper-slide !w-[350px]">
+                <div class="glass-card p-8 h-full relative cursor-grab">
+                  <i data-lucide="quote" class="text-purple-500/20 w-16 h-16 absolute top-4 right-4 z-0"></i>
+                  <div class="relative z-10">
+                    <div class="flex items-center gap-2 text-purple-400 mb-6">
+                      <i data-lucide="star" class="w-4 h-4 fill-purple-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-purple-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-purple-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-purple-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-purple-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 italic text-lg line-clamp-4">"The UI/UX design they handled for our
+                      SaaS was stunning. Pair that with absolutely flawless API architecture, and you have a world-class
+                      agency."</p>
+                    <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                      <img
+                        src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80"
+                        alt="Client" class="w-12 h-12 rounded-full ring-2 ring-purple-500/50">
+                      <div>
+                        <h4 class="font-bold text-white">Samantha Lee</h4>
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">CEO, ScaleForce</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide 3 -->
+              <div class="swiper-slide !w-[350px]">
+                <div class="glass-card p-8 h-full relative cursor-grab">
+                  <i data-lucide="quote" class="text-blue-500/20 w-16 h-16 absolute top-4 right-4 z-0"></i>
+                  <div class="relative z-10">
+                    <div class="flex items-center gap-2 text-blue-400 mb-6">
+                      <i data-lucide="star" class="w-4 h-4 fill-blue-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-blue-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-blue-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-blue-400"></i>
+                      <i data-lucide="star" class="w-4 h-4 fill-blue-400"></i>
+                    </div>
+                    <p class="text-gray-300 mb-8 italic text-lg line-clamp-4">"Absolutely professional from day 1 to
+                      launch. They delivered our native iOS and Android apps ahead of schedule with zero major bugs."
+                    </p>
+                    <div class="flex items-center gap-4 border-t border-white/10 pt-6">
+                      <img
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=facearea&facepad=2&w=150&h=150&q=80"
+                        alt="Client" class="w-12 h-12 rounded-full ring-2 ring-blue-500/50">
+                      <div>
+                        <h4 class="font-bold text-white">Daniel Foster</h4>
+                        <span class="text-xs text-gray-500 uppercase tracking-wider">CTO, HealthSync</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-pagination !bottom-0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. Contact Us -->
+  <section id="contact" class="py-32 relative bg-darkBlue">
+    <div class="container mx-auto px-6 max-w-5xl">
+      <div class="glass-card p-10 md:p-16 border-neon/30 relative overflow-hidden" data-aos="zoom-in">
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-neon/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-600/20 rounded-full blur-[100px]"></div>
+
+        <div class="text-center relative z-10 mb-12">
+          <h2 class="text-4xl md:text-5xl font-display font-bold mb-4">Let's Build <span
+              class="text-gradient">Together</span></h2>
+          <p class="text-gray-400 text-lg">Tell us about your next big project. Our experts will assess your needs
+            instantly.</p>
+        </div>
+
+        <form class="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="col-span-1">
+            <label class="block text-xs uppercase tracking-widest text-gray-500 font-bold mb-2">Full Name</label>
+            <input type="text" class="w-full modern-input rounded-xl px-4 py-4 hover-trigger" placeholder="John Doe">
+          </div>
+          <div class="col-span-1">
+            <label class="block text-xs uppercase tracking-widest text-gray-500 font-bold mb-2">Email Address</label>
+            <input type="email" class="w-full modern-input rounded-xl px-4 py-4 hover-trigger"
+              placeholder="john@company.com">
+          </div>
+          <div class="col-span-1 md:col-span-2">
+            <label class="block text-xs uppercase tracking-widest text-gray-500 font-bold mb-2">Company Name</label>
+            <input type="text" class="w-full modern-input rounded-xl px-4 py-4 hover-trigger"
+              placeholder="Company Ltd.">
+          </div>
+          <div class="col-span-1 md:col-span-2">
+            <label class="block text-xs uppercase tracking-widest text-gray-500 font-bold mb-2">Project Details</label>
+            <textarea rows="4" class="w-full modern-input rounded-xl px-4 py-4 hover-trigger resize-none"
+              placeholder="Briefly describe your requirements..."></textarea>
+          </div>
+          <div class="col-span-1 md:col-span-2 mt-4 text-center">
+            <button type="button"
+              class="border-animate-btn text-white px-12 py-5 rounded-full font-bold shadow-[0_0_20px_rgba(0,191,255,0.4)] w-full md:w-auto hover-trigger text-lg hover:scale-105 transition-transform flex items-center justify-center gap-3 mx-auto">
+              Send Message <i data-lucide="send" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 text-center relative z-10" data-aos="fade-up">
+        <div>
+          <i data-lucide="map-pin" class="w-8 h-8 text-neon mx-auto mb-4"></i>
+          <h4 class="text-lg font-bold mb-1">Global HQ</h4>
+          <p class="text-gray-400">100 Tech Lane, SF, California</p>
+        </div>
+        <div>
+          <i data-lucide="mail" class="w-8 h-8 text-purple-400 mx-auto mb-4"></i>
+          <h4 class="text-lg font-bold mb-1">Email Us</h4>
+          <p class="text-gray-400">hello@abarix.solutions</p>
+        </div>
+        <div>
+          <i data-lucide="phone" class="w-8 h-8 text-blue-400 mx-auto mb-4"></i>
+          <h4 class="text-lg font-bold mb-1">Call Support</h4>
+          <p class="text-gray-400">+1 (800) 123-4567</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-navy border-t border-white/10 pt-20 pb-10 relative overflow-hidden">
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-32 bg-neon/10 blur-[100px] rounded-[100%]">
+    </div>
+    <div class="container mx-auto px-6 max-w-7xl relative z-10">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mb-16 border-b border-white/5 pb-16 text-center md:text-left">
+        <div class="md:w-1/3">
+          <a href="#"
+            class="text-3xl font-display font-bold text-gradient flex items-center justify-center md:justify-start gap-2 mb-6">
+            <i data-lucide="hexagon" class="text-neon w-8 h-8"></i> Abarix
+          </a>
+          <p class="text-gray-400 text-sm leading-relaxed max-w-md mx-auto md:mx-0">
+            Intelligent software architecture for ambitious global brands. We build the future of the web.
+          </p>
+        </div>
+        <div class="flex gap-16 text-sm">
+          <div>
+            <h4 class="text-white font-bold tracking-wider uppercase mb-6">Company</h4>
+            <ul class="space-y-4 text-gray-400">
+              <li><a href="#about" class="hover:text-neon transition-colors">About Us</a></li>
+              <li><a href="#careers" class="hover:text-neon transition-colors">Careers</a></li>
+              <li><a href="#" class="hover:text-neon transition-colors">News & Blog</a></li>
+              <li><a href="#contact" class="hover:text-neon transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-white font-bold tracking-wider uppercase mb-6">Services</h4>
+            <ul class="space-y-4 text-gray-400">
+              <li><a href="#services" class="hover:text-neon transition-colors">Web Dev</a></li>
+              <li><a href="#services" class="hover:text-neon transition-colors">Cloud Tech</a></li>
+              <li><a href="#services" class="hover:text-neon transition-colors">AI & ML</a></li>
+              <li><a href="#services" class="hover:text-neon transition-colors">Cybersecurity</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="md:w-1/4">
+          <h4 class="text-white font-bold tracking-wider uppercase mb-6 text-center md:text-left">Subscribe</h4>
+          <p class="text-gray-400 text-xs mb-4 text-center md:text-left">Get the latest insights on tech and software
+            directly to your inbox.</p>
+          <div class="flex bg-white/5 border border-white/10 rounded-full overflow-hidden p-1">
+            <input type="email" placeholder="Email Address"
+              class="bg-transparent border-none outline-none text-white px-4 py-2 w-full text-sm">
+            <button class="bg-neon text-navy px-4 py-2 rounded-full font-bold hover:bg-white transition-colors">
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row justify-between items-center pt-6 text-gray-500 text-xs">
+        <p>&copy; 2026 Abarix Solutions Global. All rights reserved.</p>
+        <div class="flex gap-6 mt-4 md:mt-0">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+        <div class="flex gap-4 mt-4 md:mt-0">
+          <a href="#" class="hover:text-neon transition-colors hover-trigger"><i data-lucide="twitter"
+              class="w-4 h-4"></i></a>
+          <a href="#" class="hover:text-neon transition-colors hover-trigger"><i data-lucide="github"
+              class="w-4 h-4"></i></a>
+          <a href="#" class="hover:text-neon transition-colors hover-trigger"><i data-lucide="linkedin"
+              class="w-4 h-4"></i></a>
+          <a href="#" class="hover:text-neon transition-colors hover-trigger"><i data-lucide="instagram"
+              class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Core Libraries via CDN -->
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+  <!-- Three.js (For Vanta.js) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <!-- Vanta.Net Background -->
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <!-- Swiper.js Slider -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- AOS Animate On Scroll -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Logic -->
+  <script src="main.js"></script>
+</body>
+
 </html>
